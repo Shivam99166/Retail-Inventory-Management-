@@ -77,10 +77,17 @@ public class SecurityConfig {
     @SuppressWarnings("null")
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        List<String> origins = Arrays.stream(corsAllowedOrigins.split(","))
-                .map(s -> s.trim())
-                .filter(s -> !s.isEmpty())
-                .collect(Collectors.toList());
+        List<String> origins = new java.util.ArrayList<>();
+        if (corsAllowedOrigins != null) {
+            for (String raw : corsAllowedOrigins.split(",")) {
+                if (raw != null) {
+                    String trimmed = raw.trim();
+                    if (!trimmed.isEmpty()) {
+                        origins.add(trimmed);
+                    }
+                }
+            }
+        }
         configuration.setAllowedOrigins(origins);
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(List.of("*"));

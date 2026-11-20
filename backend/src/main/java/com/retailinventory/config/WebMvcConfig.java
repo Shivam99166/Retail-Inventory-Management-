@@ -17,10 +17,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     @SuppressWarnings("null")
     public void addCorsMappings(@NonNull CorsRegistry registry) {
-        String[] origins = Arrays.stream(corsAllowedOrigins.split(","))
-                .map(s -> s.trim())
-                .filter(s -> !s.isEmpty())
-                .toArray(String[]::new);
+        java.util.List<String> list = new java.util.ArrayList<>();
+        if (corsAllowedOrigins != null) {
+            for (String raw : corsAllowedOrigins.split(",")) {
+                if (raw != null) {
+                    String trimmed = raw.trim();
+                    if (!trimmed.isEmpty()) {
+                        list.add(trimmed);
+                    }
+                }
+            }
+        }
+        String[] origins = list.toArray(new String[0]);
 
         registry.addMapping("/**")
                 .allowedOrigins(origins)

@@ -6,8 +6,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Arrays;
-
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
@@ -15,7 +13,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private String corsAllowedOrigins;
 
     @Override
-    @SuppressWarnings("null")
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         java.util.List<String> list = new java.util.ArrayList<>();
         if (corsAllowedOrigins != null) {

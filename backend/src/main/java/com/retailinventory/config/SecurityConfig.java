@@ -69,11 +69,11 @@ public class SecurityConfig {
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
+            
         return http.build();
     }
 
     @Bean
-    @SuppressWarnings("null")
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         List<String> origins = new java.util.ArrayList<>();

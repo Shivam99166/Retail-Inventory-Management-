@@ -10,6 +10,7 @@
 *.local
 *.local.txt
 .env.admin
+**/application-local.properties
 
 # Generated documentation & scripts
 RetailHub_Complete_Source_Code.html

@@ -114,7 +114,7 @@ function Login() {
       ) {
         setError('Invalid email or password. Please verify your credentials and try again.');
       } else if (msg.toLowerCase().includes('network') || msg.toLowerCase().includes('failed to fetch')) {
-        setError('Unable to reach the server. Please verify the backend is running on port 8080.');
+        setError('Unable to reach the server. Please check your network connection or verify that the backend service is running.');
       } else {
         setError(msg || 'Sign in failed. Please check your credentials and try again.');
       }
